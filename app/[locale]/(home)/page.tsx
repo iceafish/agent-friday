@@ -9,7 +9,6 @@ import { Typography } from "@mui/material";
 //   return getStaticParams();
 // }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Home({
   params: { locale },
 }: {

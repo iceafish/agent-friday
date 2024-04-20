@@ -1,11 +1,9 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "@/theme";
 import type { ReactElement } from "react";
 import "./globals.css";
-import { Switch } from "./switch";
-import Link from "next/link";
-import { Typography } from "@mui/material";
+import { ThemeStateProvider } from "@/theme";
+import { ResponsiveAppBar } from "@/layout/nav";
+import { Box, Paper, Stack } from "@mui/material";
 // import { getStaticParams } from '../../locales/server';
 
 export const metadata = {
@@ -23,30 +21,26 @@ export default function RootLayout({ children }: { children: ReactElement }) {
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
+          <ThemeStateProvider>
             {/* Uncomment the suspense boundary if using `preserveSearchParams` in `useChangeLocale()` */}
             {/* <Suspense> */}
-            <Switch />
+            {/* <Switch /> */}
             {/* </Suspense> */}
-            <ul>
-              <li>
-                <Link href="/">
-                  <Typography>Go to /</Typography>
-                </Link>
-              </li>
-              <li>
-                <Link href="/subpage">
-                  <Typography>Go to /subpage</Typography>
-                </Link>
-              </li>
-              <li>
-                <Link href="/client">
-                  <Typography>Go to /client</Typography>
-                </Link>
-              </li>
-            </ul>
-            {children}
-          </ThemeProvider>
+            <Stack direction={"column"} sx={{ height: "100vh" }}>
+              <ResponsiveAppBar />
+              <Paper
+                elevation={0}
+                sx={{
+                  flex: 1,
+                  borderRadius: 0,
+                  overflowX: "hidden",
+                  overflowY: "auto",
+                }}
+              >
+                {children}
+              </Paper>
+            </Stack>
+          </ThemeStateProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

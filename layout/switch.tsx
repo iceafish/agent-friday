@@ -1,5 +1,3 @@
-"use client";
-
 import { useChangeLocale } from "@/locales/client";
 import { Button, Stack } from "@mui/material";
 
@@ -9,10 +7,10 @@ export function Switch() {
 
   return (
     <Stack direction={"row"} gap={2}>
-      <Button variant="contained" onClick={() => changeLocale("en")}>
+      <Button sx={{ color: "white" }} onClick={() => changeLocale("en")}>
         EN
       </Button>
-      <Button variant="contained" onClick={() => changeLocale("zh")}>
+      <Button sx={{ color: "white" }} onClick={() => changeLocale("zh")}>
         ZH
       </Button>
     </Stack>
